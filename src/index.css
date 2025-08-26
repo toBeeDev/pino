@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+@theme {
+  --color-milk: #faeade;
+  --color-primary: #e5e5e0;
+  --color-DarkLava: #393632;
+  --color-SageGray: #8b8b73;
+  --color-gold: #cfa355;
+
+  /* 영문/한글: Noto Sans 기반, 시스템 폴백 */
+  --font-latin-primary: "Noto Sans", system-ui, -apple-system, Segoe UI, Roboto,
+    Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji",
+    "Segoe UI Emoji";
+  --font-korean-primary: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic",
+    "Nanum Gothic", sans-serif;
+
+  --animate-marquee: marquee 40s infinite linear;
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+}
+
+body {
+  background-color: #e7f0fc;
+  color: #222123;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  font-family: var(--font-latin-primary), var(--font-korean-primary);
+  font-weight: 500;
+  font-style: normal;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-latin-primary), var(--font-korean-primary);
+    line-height: 1.2;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl font-bold;
+  }
+  h2 {
+    @apply text-4xl md:text-5xl font-semibold;
+  }
+  h3 {
+    @apply text-3xl md:text-4xl font-semibold;
+  }
+  h4 {
+    @apply text-2xl md:text-3xl font-medium;
+  }
+}
+
+@layer utilities {
+  /* Scroll down hint */
+  .scroll-down {
+    @apply flex justify-center items-center;
+  }
+  .arrow-down {
+    animation: scroll-bounceY 1.6s ease-in-out infinite;
+  }
+  .col-center {
+    @apply flex flex-col justify-center items-center;
+  }
+  .abs-center {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+  }
+  .general-title {
+    @apply 2xl:text-[8.5rem] md:text-8xl text-5xl font-bold uppercase leading-[9vw] tracking-[-.35vw];
+  }
+  /* AnimatedHeaderSection responsive text */
+  .banner-text-responsive {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-[9rem] font-bold leading-tight;
+  }
+  .value-text-responsive {
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed;
+  }
+  /* compat: allow usage of text-md */
+  .text-md {
+    @apply text-base sm:text-lg;
+  }
+  /* Works section overlay: hidden by default, shown on hover via GSAP */
+  .clip-path {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  }
+}
+.pin-spacer {
+  max-height: none;
+  overflow: visible;
+}
+@layer components {
+  /* BenefitSection */
+  .benefit-section {
+    @apply min-h-dvh overflow-hidden relative;
+  }
+
+  .benefit-section p {
+    @apply text-milk text-center text-lg;
+  }
+
+  .benefit-section .first-title {
+    @apply rotate-[3deg] relative z-10;
+  }
+
+  .benefit-section .second-title {
+    @apply rotate-[-1deg] md:-translate-y-2;
+  }
+
+  .benefit-section .third-title {
+    @apply rotate-[-3deg] md:-translate-y-3 relative z-10;
+  }
+
+  .benefit-section .fourth-title {
+    @apply rotate-[5deg] md:-translate-y-5;
+  }
+
+  /* VideoPinSection */
+  .benefit-section .vd-pin-section {
+    @apply md:h-[110vh] h-dvh overflow-hidden md:mt-0 mt-20;
+  }
+
+  .benefit-section .vd-pin-section video {
+    @apply size-full absolute inset-0 object-cover;
+  }
+
+  .benefit-section .vd-pin-section .play-btn {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[9vw] flex justify-center items-center bg-[#ffffff1a] backdrop-blur-xl rounded-full;
+  }
+
+  .benefit-section .vd-pin-section img:first-of-type {
+    @apply size-[15vw];
+  }
+}
+
+/* VideoPinSection */
+.spin-circle {
+  animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* scroll down arrow bounce */
+@keyframes scroll-bounceY {
+  0% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0.9;
+  }
+}
