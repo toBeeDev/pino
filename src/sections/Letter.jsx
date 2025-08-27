@@ -14,11 +14,11 @@ const Letter = () => {
   const imgRef = useRef(null);
   useGSAP(() => {
     gsap.to("#about", {
-      scale: 0.95,
+      scale: 0.98,
       scrollTrigger: {
         trigger: "#about",
-        start: "bottom 80%",
-        end: "bottom 20%",
+        start: "bottom 90%",
+        end: "bottom 30%",
         scrub: true,
         markers: false,
       },
@@ -30,9 +30,9 @@ const Letter = () => {
     });
     gsap.to(imgRef.current, {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
-      duration: 2,
-      ease: "power4.out",
-      scrollTrigger: { trigger: imgRef.current },
+      duration: 1.2,
+      ease: "power3.out",
+      scrollTrigger: { trigger: imgRef.current, start: "top 95%" },
     });
   });
   return (

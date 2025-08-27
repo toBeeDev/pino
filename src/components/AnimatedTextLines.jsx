@@ -14,18 +14,18 @@ export const AnimatedTextLines = ({
   useGSAP(() => {
     if (lineRefs.current.length > 0) {
       const base = {
-        y: 100,
+        y: 60,
         opacity: 0,
-        duration: 1,
-        stagger: 0.3,
-        ease: "back.out",
+        duration: 0.7,
+        stagger: 0.15,
+        ease: "power3.out",
       };
       if (withScrollTrigger) {
         gsap.from(lineRefs.current, {
           ...base,
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 90%",
+            start: "top 95%",
             toggleActions: "play none none none",
             once: true,
           },

@@ -17,23 +17,24 @@ const AnimatedHeaderSection = ({
       scrollTrigger: withScrollTrigger
         ? {
             trigger: contextRef.current,
+            start: "top 92%",
           }
         : undefined,
     });
     tl.from(contextRef.current, {
-      y: "50vh",
-      duration: 1,
-      ease: "circ.out",
+      y: "25vh",
+      duration: 0.7,
+      ease: "power3.out",
     });
     tl.from(
       headerRef.current,
       {
         opacity: 0,
-        y: "200",
-        duration: 1,
-        ease: "circ.out",
+        y: "100",
+        duration: 0.6,
+        ease: "power3.out",
       },
-      "<+0.2"
+      "<+0.1"
     );
   }, []);
   return (
