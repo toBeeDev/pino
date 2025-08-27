@@ -10,9 +10,8 @@ const MonthlyEvents = () => {
   const previewRef = useRef(null);
 
   const [currentIndex, setCurrentIndex] = useState(null);
-  const text = `한달 한달  
-솔이와의
-기록들`;
+  const text = `솔이와
+  한달간의 기록들`;
 
   const mouse = useRef({ x: 0, y: 0 });
   const moveX = useRef(null);
@@ -102,7 +101,6 @@ const MonthlyEvents = () => {
   return (
     <section id="work" className="flex flex-col min-h-screen ">
       <AnimatedHeaderSection
-        subTitle={"솔이의 2025년"}
         title={"2025"}
         text={text}
         textColor={"text-black"}
