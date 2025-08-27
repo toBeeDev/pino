@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Hero from "./sections/Hero";
-import BenefitSection from "./sections/BenefitSection";
+import Video from "./sections/Video";
 import ReactLenis from "lenis/react";
 import Letter from "./sections/Letter";
 import MonthlyEvents from "./sections/MonthlyEvents";
-import Contact from "./sections/Contact";
+import ScrollGallery from "./sections/ScrollGallery";
 import { useProgress } from "@react-three/drei";
 
 const App = () => {
@@ -41,10 +41,10 @@ const App = () => {
         } transition-opacity duration-1000`}
       >
         <Hero />
-        <BenefitSection />
+        <Video />
+        <ScrollGallery />
         <Letter />
         <MonthlyEvents />
-        <Contact />
       </div>
     </ReactLenis>
   );
