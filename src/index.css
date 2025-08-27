@@ -26,13 +26,16 @@
 }
 
 body {
-  background-color: #e7f0fc;
+  background-color: #fce7f3;
   color: #222123;
   scroll-behavior: smooth;
   overflow-x: hidden;
   font-family: var(--font-latin-primary), var(--font-korean-primary);
   font-weight: 500;
   font-style: normal;
+  max-width: 100%;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
 }
 
 @layer base {
@@ -77,10 +80,10 @@ body {
   }
   /* AnimatedHeaderSection responsive text */
   .banner-text-responsive {
-    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-[9rem] font-bold leading-tight;
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl 2xl:text-[9rem] font-bold leading-tight whitespace-nowrap;
   }
   .value-text-responsive {
-    @apply text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed;
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed whitespace-pre-line;
   }
   /* compat: allow usage of text-md */
   .text-md {
@@ -136,6 +139,12 @@ body {
 
   .benefit-section .vd-pin-section img:first-of-type {
     @apply size-[15vw];
+  }
+
+  .testimonials-section {
+    h1 {
+      @apply uppercase text-[15vw] leading-[105%] tracking-[-.4vw] ml-[2vw] font-bold;
+    }
   }
 }
 
