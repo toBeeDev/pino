@@ -23,11 +23,13 @@ export const AnimatedTextLines = ({
       if (withScrollTrigger) {
         gsap.from(lineRefs.current, {
           ...base,
+          immediateRender: true,
           scrollTrigger: {
             trigger: containerRef.current,
             start: "top 95%",
             toggleActions: "play none none none",
             once: true,
+            invalidateOnRefresh: true,
           },
         });
       } else {
@@ -42,7 +44,7 @@ export const AnimatedTextLines = ({
         <span
           key={index}
           ref={(el) => (lineRefs.current[index] = el)}
-          className="block leading-relaxed tracking-wide text-pretty"
+          className="block leading-relaxed text-lg md:text-2xl"
         >
           {line}
         </span>
