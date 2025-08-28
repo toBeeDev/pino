@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
 const imageCards = Array.from({ length: 8 }, (_, i) => ({
-  src: `/assets/projects/${i + 1}.jpg`,
+  src: `/assets/young/y${i + 1}.jpg`,
 }));
 
 const ScrollGallery = () => {
@@ -63,9 +63,9 @@ const ScrollGallery = () => {
     <section className="testimonials-section relative h-dvh bg-pink-100 overflow-hidden">
       {/* 타이틀: 생일 축하 문구 (정중앙 고정) */}
       <div className="absolute inset-0 z-0 flex flex-col items-center justify-center pointer-events-none">
-        <h1 className="text-black first-title">What's</h1>
-        <h1 className="text-light-brown sec-title">Everyone</h1>
-        <h1 className="text-black third-title">Talking</h1>
+        <h1 className="text-black first-title">When</h1>
+        <h1 className="text-light-brown sec-title">She Was</h1>
+        <h1 className="text-black third-title">Little</h1>
       </div>
 
       {/* 카드 피닝 박스 (정중앙에서 위로 쌓임) */}
@@ -104,6 +104,8 @@ const ScrollGallery = () => {
               style={{ willChange: "transform", zIndex: index + 1 }}
             >
               <img
+                loading="lazy"
+                decoding="async"
                 src={card.src}
                 alt="memory"
                 className="size-full object-cover"

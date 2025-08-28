@@ -146,11 +146,15 @@ const MonthlyEvents = () => {
             {/* mobile preview image */}
             <div className="relative flex items-center justify-center px-10 md:hidden h-[400px]">
               <img
+                loading="lazy"
+                decoding="async"
                 src={project.bgImage}
                 alt={`${project.name}-bg-image`}
                 className="object-cover w-full h-full rounded-md brightness-50"
               />
               <img
+                loading="lazy"
+                decoding="async"
                 src={project.image}
                 alt={`${project.name}-image`}
                 className="absolute bg-center px-14 rounded-xl max-w-[400px]"
@@ -165,6 +169,8 @@ const MonthlyEvents = () => {
         >
           {currentIndex !== null && (
             <img
+              loading="lazy"
+              decoding="async"
               src={projects[currentIndex].image}
               alt="preview"
               className="object-cover w-full h-full"
