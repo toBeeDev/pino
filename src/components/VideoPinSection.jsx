@@ -90,7 +90,13 @@ const VideoPinSection = () => {
         />
 
         <div className="abs-center md:scale-100 scale-200">
-          <img src="/images/circle-text.svg" alt="" className="spin-circle" />
+          <img
+            src="/images/circle-text.svg"
+            alt=""
+            className="spin-circle"
+            loading="lazy"
+            decoding="async"
+          />
           <div
             className="play-btn"
             role="button"
@@ -103,6 +109,8 @@ const VideoPinSection = () => {
             }}
           >
             <img
+              loading="lazy"
+              decoding="async"
               src="/images/play.svg"
               alt=""
               className="size-[3vw] ml-[.5vw]"
