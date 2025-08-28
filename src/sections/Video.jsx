@@ -51,7 +51,7 @@ const Video = () => {
     <section className="benefit-section bg-pink-100">
       <div className="container mx-auto pt-20">
         <div className="col-center">
-          <div className="mt-20 col-center">
+          <div className="mt-16 md:mt-20 col-center">
             <ClipPathTitle
               title={"1999.08.30"}
               color={"#faeade"}
@@ -84,11 +84,13 @@ const Video = () => {
 
           <div className="md:pt-20 pt-20 scroll-down scroll-indicator opacity-0">
             <div className="flex flex-col items-center gap-2 text-[#222123]">
-              <span className="text-lg uppercase">Scroll down</span>
+              <span className="text-2xl md:text-5xl uppercase">
+                Scroll down
+              </span>
               <svg
                 className="arrow-down"
-                width="24"
-                height="24"
+                width="32"
+                height="32"
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

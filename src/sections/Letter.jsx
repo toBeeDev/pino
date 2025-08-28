@@ -47,8 +47,6 @@ const Letter = () => {
           ref={imgRef}
           src="images/hero.jpg"
           alt="man"
-          loading="lazy"
-          decoding="async"
           onLoad={() => ScrollTrigger.refresh()}
           className="w-md rounded-3xl"
         />

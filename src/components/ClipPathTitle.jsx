@@ -9,7 +9,7 @@ const ClipPathTitle = ({ title, color, bg, className, borderColor }) => {
         className={`${className} border-[.5vw] text-nowrap opacity-0`}
       >
         <div
-          className="pb-5 md:px-14 px-3 md:pt-0 pt-3"
+          className="py-3 md:py-5 md:px-14 px-3"
           style={{
             backgroundColor: bg,
           }}

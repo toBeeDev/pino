@@ -14,29 +14,35 @@ const VideoPinSection = () => {
     const v = videoRef.current;
     if (!v) return;
     try {
-      const ensurePlay = () => {
-        const p = v.play?.();
-        if (p && typeof p.then === "function") {
-          return p.catch(() => {
-            v.muted = true;
-            return v.play().then(() => Promise.resolve());
-          });
-        }
-        return Promise.resolve();
-      };
-
-      // Toggle muted state on user gesture
+      // 다음 상태(음소거 여부)를 먼저 계산
       const nextMuted = !v.muted;
+
+      // 음소거 해제 시 볼륨 설정 및 Safari/iOS 처리
       if (!nextMuted) {
-        // Unmuting: set volume and remove attribute for Safari/iOS quirk
         v.volume = 1;
         v.removeAttribute && v.removeAttribute("muted");
       }
+
+      // 음소거 상태를 반영하고 로컬 상태도 동기화
       v.muted = nextMuted;
       setMuted(nextMuted);
 
-      // Make sure it's playing so the change is audible
-      ensurePlay();
+      // 음소거 여부에 따라 재생/일시정지 동작도 함께 토글
+      if (nextMuted) {
+        // 음소거로 전환되면 영상도 일시정지
+        v.pause?.();
+      } else {
+        // 음소거 해제되면 영상 재생 보장
+        const p = v.play?.();
+        if (p && typeof p.then === "function") {
+          p.catch(() => {
+            // 드물게 브라우저 정책으로 실패 시, 다시 음소거 후 재생 시도
+            v.muted = true;
+            setMuted(true);
+            return v.play?.();
+          });
+        }
+      }
     } catch (e) {
       console.log(e);
     }
@@ -108,13 +114,19 @@ const VideoPinSection = () => {
               if (e.key === "Enter" || e.key === " ") handleToggleSound();
             }}
           >
-            <img
-              loading="lazy"
-              decoding="async"
-              src="/images/play.svg"
-              alt=""
-              className="size-[3vw] ml-[.5vw]"
-            />
+            {muted ? (
+              <img
+                src="/images/play.png"
+                alt=""
+                className="size-[3vw] ml-[.5vw]"
+              />
+            ) : (
+              <img
+                src="/images/pause.png"
+                alt=""
+                className="size-[3vw] ml-[.5vw]"
+              />
+            )}
           </div>
         </div>
       </div>

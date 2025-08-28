@@ -104,8 +104,6 @@ const ScrollGallery = () => {
               style={{ willChange: "transform", zIndex: index + 1 }}
             >
               <img
-                loading="lazy"
-                decoding="async"
                 src={card.src}
                 alt="memory"
                 className="size-full object-cover"
