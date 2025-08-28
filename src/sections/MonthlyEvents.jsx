@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react/dist/iconify.js";
 import AnimatedHeaderSection from "../components/AnimatedHeaderSection";
-import { projects } from "../constants";
+import { monthlyEvents } from "../constants";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -110,7 +110,7 @@ const MonthlyEvents = () => {
         className="relative flex flex-col font-light"
         onMouseMove={handleMouseMove}
       >
-        {projects.map((project, index) => (
+        {monthlyEvents.map((project, index) => (
           <div
             key={project.id}
             id="project"
@@ -165,7 +165,7 @@ const MonthlyEvents = () => {
         >
           {currentIndex !== null && (
             <img
-              src={projects[currentIndex].image}
+              src={monthlyEvents[currentIndex].image}
               alt="preview"
               className="object-cover w-full h-full"
             />
