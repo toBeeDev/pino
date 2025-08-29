@@ -54,22 +54,22 @@ const Video = () => {
           <div className="mt-16 md:mt-20 col-center">
             <ClipPathTitle
               title={"1999.08.30"}
-              color={"#faeade"}
-              bg={"#FA87F5"}
+              color={"#2E2D2F"}
+              bg={"#EB88E1"}
               className={"first-title"}
-              borderColor={"#222123"}
+              borderColor={"#FFFFFF"}
             />
             <ClipPathTitle
               title={"YI SOL"}
               color={"#2E2D2F"}
-              bg={"#91FA87"}
+              bg={"#54BF43"}
               className={"second-title"}
               borderColor={"#FFFFFF"}
             />
             <ClipPathTitle
               title={"INTJ - strategist"}
               color={"#2E2D2F"}
-              bg={"#F5E840"}
+              bg={"#CDD459"}
               className={"third-title"}
               borderColor={"#FFFFFF"}
             />
