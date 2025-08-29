@@ -99,7 +99,11 @@ const MonthlyEvents = () => {
   };
 
   return (
-    <section id="work" className="flex flex-col min-h-screen ">
+    <section
+      id="work"
+      className="flex flex-col min-h-screen
+     bg-[url('/images/monthly-bg.jpg')] bg-cover bg-center bg-repeat"
+    >
       <AnimatedHeaderSection
         title={"2025"}
         text={text}
