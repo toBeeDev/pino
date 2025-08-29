@@ -55,30 +55,30 @@ const Video = () => {
             <ClipPathTitle
               title={"1999.08.30"}
               color={"#faeade"}
-              bg={"#c88e64"}
+              bg={"#FA87F5"}
               className={"first-title"}
               borderColor={"#222123"}
             />
             <ClipPathTitle
               title={"YI SOL"}
-              color={"#222123"}
-              bg={"#faeade"}
+              color={"#2E2D2F"}
+              bg={"#91FA87"}
               className={"second-title"}
-              borderColor={"#222123"}
+              borderColor={"#FFFFFF"}
             />
             <ClipPathTitle
               title={"INTJ - strategist"}
-              color={"#faeade"}
-              bg={"#7F3B2D"}
+              color={"#2E2D2F"}
+              bg={"#F5E840"}
               className={"third-title"}
-              borderColor={"#222123"}
+              borderColor={"#FFFFFF"}
             />
             <ClipPathTitle
               title={"MY LOVE"}
               color={"#2E2D2F"}
-              bg={"#FED775"}
+              bg={"#FF0000"}
               className={"fourth-title"}
-              borderColor={"#222123"}
+              borderColor={"#FFFFFF"}
             />
           </div>
 
