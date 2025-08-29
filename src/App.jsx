@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react";
+import ReactLenis from "lenis/react";
+import { useProgress } from "@react-three/drei";
 import Hero from "./sections/Hero";
 import Video from "./sections/Video";
-import ReactLenis from "lenis/react";
+import ScrollGallery from "./sections/ScrollGallery";
 import Letter from "./sections/Letter";
 import MonthlyEvents from "./sections/MonthlyEvents";
-import ScrollGallery from "./sections/ScrollGallery";
-import { useProgress } from "@react-three/drei";
 
 const App = () => {
   const { progress } = useProgress();
   const [isReady, setIsReady] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     if (progress === 100) {

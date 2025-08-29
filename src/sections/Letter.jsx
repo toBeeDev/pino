@@ -37,23 +37,26 @@ const Letter = () => {
   return (
     <section
       id="about"
-      className="rounded-4xl bg-[url('/images/letter-bg.png')] bg-cover bg-center bg-repeat"
+      className="rounded-4xl bg-[url('/images/letter-bg.png')] bg-cover bg-center bg-repeat relative"
     >
-      <AnimatedHeaderSection
-        title={"Letter For You"}
-        text={text}
-        withScrollTrigger={true}
-        pt="pt-4"
-      />
-      <div className="flex flex-col items-center justify-between gap-16 px-8 pb-16 text-md tracking-wide lg:flex-row md:text-2xl lg:text-3xl">
-        <img
-          ref={imgRef}
-          src="images/hero.jpg"
-          alt="man"
-          onLoad={() => ScrollTrigger.refresh()}
-          className="w-md rounded-3xl"
+      <div className="absolute inset-0 bg-white/60 rounded-4xl"></div>
+      <div className="relative z-10">
+        <AnimatedHeaderSection
+          title={"Letter For You"}
+          text={text}
+          withScrollTrigger={true}
+          pt="pt-4"
         />
-        <AnimatedTextLines text={aboutText} className={"w-full"} />
+        <div className="flex flex-col items-center justify-between gap-16 px-8 pb-16 tracking-wide lg:flex-row">
+          <img
+            ref={imgRef}
+            src="images/hero.jpg"
+            alt="man"
+            onLoad={() => ScrollTrigger.refresh()}
+            className="w-md rounded-3xl"
+          />
+          <AnimatedTextLines text={aboutText} className={"w-full"} />
+        </div>
       </div>
     </section>
   );

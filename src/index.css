@@ -7,12 +7,11 @@
   --color-SageGray: #8b8b73;
   --color-gold: #cfa355;
 
-  /* 영문/한글: Noto Sans 기반, 시스템 폴백 */
-  --font-latin-primary: "Noto Sans", system-ui, -apple-system, Segoe UI, Roboto,
-    Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji",
-    "Segoe UI Emoji";
-  --font-korean-primary: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic",
-    "Nanum Gothic", sans-serif;
+  /* 영문: Roboto 기반, 한글: Jua 기반 */
+  --font-latin-primary: "Roboto", system-ui, -apple-system, Segoe UI, Arial,
+    sans-serif;
+  --font-korean-primary: "Jua", system-ui, -apple-system, "Apple SD Gothic Neo",
+    sans-serif;
 
   --animate-marquee: marquee 40s infinite linear;
   @keyframes marquee {
@@ -62,6 +61,11 @@ body {
 }
 
 @layer utilities {
+  /* Jua 폰트 클래스 */
+  .jua-regular {
+    font-family: "Jua", sans-serif;
+  }
+
   /* Scroll down hint */
   .scroll-down {
     @apply flex justify-center items-center;
@@ -84,10 +88,6 @@ body {
   }
   .value-text-responsive {
     @apply text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed whitespace-pre-line;
-  }
-  /* compat: allow usage of text-md */
-  .text-md {
-    @apply text-base sm:text-lg;
   }
   /* Works section overlay: hidden by default, shown on hover via GSAP */
   .clip-path {

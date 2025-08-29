@@ -89,7 +89,7 @@ const ScrollGallery = () => {
                   "w-[70vw] h-[94vw] rotate-[1deg]",
                 ][index] || "w-[70vw] h-[94vw]") +
                 // 데스크톱: 중앙 기준 좌우 대칭으로 펼치며 위로 쌓임 + 회전 다양화 (수직은 중앙 고정)
-                " md:w-[22vw] md:h-[30vw] " +
+                " md:w-[28vw] md:h-[38vw] " +
                 ([
                   "md:left-[calc(50%-14vw)] md:rotate-[-4deg]",
                   "md:left-[calc(50%-9vw)] md:rotate-[2deg]",

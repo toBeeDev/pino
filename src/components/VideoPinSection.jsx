@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, useState } from "react";
+import React, { useRef, useCallback, useState, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useMediaQuery } from "react-responsive";
@@ -6,9 +6,54 @@ import { useMediaQuery } from "react-responsive";
 const VideoPinSection = () => {
   const videoRef = useRef(null);
   const [muted, setMuted] = useState(true);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState(false);
   const isMobile = useMediaQuery({
     query: "(max-width: 768px)",
   });
+
+  // 비디오 지연 로딩
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && videoRef.current) {
+            const video = videoRef.current;
+            // WebM 포맷을 우선 시도하고, 실패 시 MP4로 폴백
+            const webmSource = document.createElement("source");
+            webmSource.src = "/videos/pino-video.webm";
+            webmSource.type = "video/webm";
+
+            const mp4Source = document.createElement("source");
+            mp4Source.src = "/videos/pino-video.mp4";
+            mp4Source.type = "video/mp4";
+
+            video.appendChild(webmSource);
+            video.appendChild(mp4Source);
+
+            video.load();
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (videoRef.current) {
+      observer.observe(videoRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleVideoLoad = useCallback(() => {
+    setIsVideoLoaded(true);
+  }, []);
+
+  const handleVideoError = useCallback(() => {
+    setVideoError(true);
+    console.warn("비디오 로딩 실패, 대체 이미지로 폴백");
+  }, []);
 
   const handleToggleSound = useCallback(() => {
     const v = videoRef.current;
@@ -86,14 +131,28 @@ const VideoPinSection = () => {
         }}
         className="size-full video-box"
       >
-        <video
-          ref={videoRef}
-          src="/videos/pino-video.mp4"
-          playsInline
-          muted
-          loop
-          autoPlay
-        />
+        {!videoError ? (
+          <video
+            ref={videoRef}
+            playsInline
+            muted
+            loop
+            autoPlay
+            preload="metadata"
+            onLoadedData={handleVideoLoad}
+            onError={handleVideoError}
+            style={{
+              opacity: isVideoLoaded ? 1 : 0,
+              transition: "opacity 0.5s ease-in-out",
+            }}
+          />
+        ) : (
+          <img
+            src="/images/hero.jpg"
+            alt="대체 이미지"
+            className="w-full h-full object-cover"
+          />
+        )}
 
         <div className="abs-center md:scale-100 scale-200">
           <img
@@ -119,12 +178,14 @@ const VideoPinSection = () => {
                 src="/images/play.png"
                 alt=""
                 className="size-[3vw] ml-[.5vw]"
+                loading="lazy"
               />
             ) : (
               <img
                 src="/images/pause.png"
                 alt=""
                 className="size-[3vw] ml-[.5vw]"
+                loading="lazy"
               />
             )}
           </div>

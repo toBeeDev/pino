@@ -41,13 +41,13 @@ export const AnimatedTextLines = ({
   return (
     <div ref={containerRef} className={className}>
       {lines.map((line, index) => (
-        <span
+        <p
           key={index}
           ref={(el) => (lineRefs.current[index] = el)}
-          className="block"
+          className="block text-md md:text-2xl font-[500]"
         >
           {line}
-        </span>
+        </p>
       ))}
     </div>
   );
